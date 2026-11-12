@@ -37,6 +37,7 @@
     "graphql-relay": "0.10.2",
     "graphql-upload": "15.0.2",
     "intersect": "1.0.1",
+    "joi": "^17.13.9",
     "jsonwebtoken": "9.0.2",
     "jwks-rsa": "3.2.0",
     "ldapjs": "3.0.7",
@@ -116,7 +117,7 @@
     "docs": "jsdoc -c ./jsdoc-conf.json",
     "lint": "eslint --cache ./ --flag unstable_config_lookup_from_file",
     "lint-fix": "eslint --fix --cache ./ --flag unstable_config_lookup_from_file",
-    "build": "babel src/ -d lib/ --copy-files --extensions '.ts,.js'",
+    "build": "babel src/ -d lib/ --copy-files --extensions .ts,.js",
     "build:types": "tsc",
     "watch": "babel --watch src/ -d lib/ --copy-files",
     "watch:ts": "tsc --watch",
@@ -136,7 +137,9 @@
     "madge:circular": "node_modules/.bin/madge ./src --circular",
     "benchmark": "cross-env MONGODB_VERSION=8.0.4 MONGODB_TOPOLOGY=standalone mongodb-runner exec -t standalone --version 8.0.4 -- --port 27017 -- npm run benchmark:only",
     "benchmark:only": "node benchmark/performance.js",
-    "benchmark:quick": "cross-env BENCHMARK_ITERATIONS=10 npm run benchmark:only"
+    "benchmark:quick": "cross-env BENCHMARK_ITERATIONS=10 npm run benchmark:only",
+    "integration:test": "npm run build && node integration/test.js",
+    "integration:start": "node integration/start.cjs"
   },
   "types": "types/index.d.ts",
   "engines": {
